@@ -6,7 +6,7 @@ const color3 = "#202C33";
 
 export const Container = styled.div`
   background-color: ${color1};
-  /* height: 100vh; */
+  width: 100%;
 `;
 
 export const Header = styled.div`
@@ -14,8 +14,8 @@ export const Header = styled.div`
   background-color: ${color3};
   position: fixed;
   top: 0;
+  padding: 10px;
   div {
-    /* padding: 5px 0px; */
     margin: 0 auto;
     max-width: 99%;
     display: flex;
@@ -26,66 +26,60 @@ export const Header = styled.div`
 `;
 
 export const ChatContainer = styled.div`
-  /* padding-top: 35px;
-  padding-bottom: 50px; */
-  background-color: ${color1};
+  padding: 1rem 1rem;
   display: flex;
   flex-direction: column;
-  font-family: Arial, sans-serif;
-  height: 100vh;
-  justify-content: space-between;
-  width: 100vw;
-
-  ul {
-    margin: 0;
-    padding: 1rem;
-
-    li {
-      list-style: none;
-
-      .message {
-        color: white;
-        border: 1px solid transparent;
-        border-radius: 5px;
-        display: inline-block;
-        list-style: none;
-        margin-bottom: 1rem;
-        padding: 0.5rem 1rem;
-        font-size: 14px;
-
-        span {
-          font-size: 13px;
-        }
-      }
-    }
-
-    .message.message--mine {
-      background: #405765;
-      text-align: right;
-
-      span.me {
-        color: #202c33;
-      }
-    }
-
-    .message.message--other {
-      background: #202c33;
+  gap: 1rem;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 0.2rem;
+    &-thumb {
+      background-color: #ffffff39;
+      width: 0.1rem;
+      border-radius: 1rem;
     }
   }
+  .message {
+    display: flex;
+    align-items: center;
+    .content {
+      max-width: 90%;
+      overflow-wrap: break-word;
+      padding: 1rem;
+      font-size: 14px;
+      border-radius: 10px;
+      color: #d1d1d1;
+      @media screen and (min-width: 720px) and (max-width: 1080px) {
+        max-width: 70%;
+      }
 
-  li.list__item--mine {
-    text-align: right;
+      span {
+        font-size: 13px;
+      }
+    }
+  }
+  .sended {
+    justify-content: flex-end;
+    .content {
+      background-color: #405765;
+    }
+  }
+  .recieved {
+    justify-content: flex-start;
+    .content {
+      background-color: #202c33;
+    }
   }
 `;
 
-export const FormContainer = styled.div`
-  border-top: 0.5px solid ${color2};
-  padding: 10px 0px;
+export const MessageItem = styled.li``;
 
+export const FormContainer = styled.div`
+  padding: 10px 5px;
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: ${color1};
+  background-color: ${color3};
   position: fixed;
   bottom: 0px;
 
@@ -97,10 +91,10 @@ export const FormContainer = styled.div`
 
     button {
       background-color: transparent;
-      width: 40px;
-      height: 40px;
+      width: 35px;
+      height: 35px;
       margin: 0px 10px;
-      padding: 6px;
+      padding: 4px;
       border-radius: 100%;
       border: none;
       border: 0.5px solid ${color2};
@@ -110,11 +104,11 @@ export const FormContainer = styled.div`
     input {
       background-color: transparent;
       resize: none;
-      padding: 10px;
+      padding: 15px;
       border-radius: 10px;
       width: 90%;
       height: 25px;
-      font-size: 20px;
+      font-size: 14px;
       border: none;
       outline: none;
       border: 0.5px solid ${color2};

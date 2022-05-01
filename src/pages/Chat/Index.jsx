@@ -16,7 +16,7 @@ export default function Chat() {
   const [socket, setSocket] = useState(oldSocket);
   const [myColor, setMyCollor] = useState("");
 
-  const myUserName = JSON.parse(localStorage.getItem("currentUserData")).name;
+  const myUserName = JSON.parse(localStorage.getItem("currentUserData")).userName;
   const myId = JSON.parse(localStorage.getItem("currentUserData"))._id;
 
   function generateColor() {
@@ -89,55 +89,48 @@ export default function Chat() {
           <FaSignOutAlt size={20} color="white" onClick={logout} />
         </div>
       </C.Header>
+      <br />
+      <br />
+      <br />
       <C.ChatContainer>
-        <ul className="list">
-          <br />
-          {messages.map((m, index) => (
-            <li
-              className={`list__item list__item--${
-                m.userId === myId ? "mine" : "other"
-              }`}
-              key={index}
+        {messages?.map((m, i) => (
+          <div key={i}>
+            <div
+              className={`message ${m.userId === myId ? "sended" : "recieved"}`}
             >
-              <p
-                className={`message message--${
-                  m.userId === myId ? "mine" : "other"
-                }`}
-              >
-                {m.msg}
+              <div className="content">
+                <p>{m.msg}</p>
                 <br />
-                {m.userName === myUserName ? (
-                  <span className="me">Voce</span>
-                ) : (
-                  <span className="other" style={{ color: m.msgColor }}>
-                    {m.userName}
-                  </span>
-                )}
-              </p>
-            </li>
-          ))}
-          {/* <br />
-          <br />
-          <br />
-          <br /> */}
-        </ul>
-        <C.FormContainer>
-          <form onSubmit={handleFormSubmit}>
-            <input
-              type="text"
-              placeholder="Type a new message here"
-              onChange={handleInputChange}
-              value={msg}
-            ></input>
-
-            <div className="containerButtons">
-              <button>
-                <FaAngleRight size={25} />
-              </button>
+                <span
+                  className="me"
+                  style={{
+                    color: m.userName === myUserName ? "yellow" : m.msgColor,
+                  }}
+                >
+                  {m.userName === myUserName ? "voce" : m.userName}
+                </span>
+              </div>
             </div>
-          </form>
-        </C.FormContainer>
+          </div>
+        ))}
       </C.ChatContainer>
+      <br /> <br /> <br /> <br /> <br /> <br />
+      <C.FormContainer>
+        <form onSubmit={handleFormSubmit}>
+          <input
+            type="text"
+            placeholder="Type a new message here"
+            onChange={handleInputChange}
+            value={msg}
+          ></input>
+
+          <div className="containerButtons">
+            <button>
+              <FaAngleRight size={25} />
+            </button>
+          </div>
+        </form>
+      </C.FormContainer>
     </C.Container>
   );
 }
