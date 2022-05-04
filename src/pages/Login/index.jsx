@@ -4,6 +4,7 @@ import FromComponent from "../../components/FormComponent";
 import { postLogin } from "../../service/api.js";
 import { AppContext } from "../../Context/Store";
 import { useNavigate, Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Login() {
   const [values, setValues] = useState({ email: "", password: "" });
@@ -27,6 +28,8 @@ export default function Login() {
     postLogin(values.email, values.password).then((response) => {
       setToken(response.data.token);
       setCurrentUserData(response.data.currentUser);
+    }).catch(err => {
+      toast("Erro ao fazer Login: "+ JSON.stringify(err.response.data.msg))
     });
 
     if (token) {
@@ -48,6 +51,7 @@ export default function Login() {
 
   return (
     <FromComponent Login={true} OnSubmitForm={onSubmit}>
+      <ToastContainer/>
       <Input User={true}>
         <input
           type="email"

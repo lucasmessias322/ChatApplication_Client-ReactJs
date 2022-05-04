@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useContext } from "react";
 
 export const api = axios.create({
-  baseURL: "http://localhost:8081",
+  baseURL: "http://192.168.0.5:8082",
 });
 
 export const config = (token) => {

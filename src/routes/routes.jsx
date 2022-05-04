@@ -6,6 +6,7 @@ import PrivateRoute from "./PrivateRouter";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import DashBoard from "../pages/Chat/Index";
+import Contacts from "../pages/Contacts";
 
 const RouterComponent = () => {
   return (
@@ -16,6 +17,14 @@ const RouterComponent = () => {
           element={
             <PrivateRoute redirectTo="/">
               <DashBoard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/">
+              <Contacts />
             </PrivateRoute>
           }
         />

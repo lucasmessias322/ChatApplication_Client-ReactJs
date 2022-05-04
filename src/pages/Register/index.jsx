@@ -3,12 +3,13 @@ import Input from "../../components/Input";
 import FromComponent from "../../components/FormComponent";
 import { postRegister } from "../../service/api";
 import { useNavigate, Link } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
 export default function Register() {
   const navigate = useNavigate();
   const [response, setResponse] = useState({ msg: "", userCriado: false });
   const [values, setValues] = useState({
     name: "",
+    userName: "",
     email: "",
     password: "",
     confirmpassword: "",
@@ -31,7 +32,9 @@ export default function Register() {
         console.log(response.data);
         setResponse(response.data);
       })
-      .catch((error) => console.log("Erro ao se registrar: " + error));
+      .catch((error) => {
+        toast("Erro ao se registrar: " + JSON.stringify(error.response.data.msg));
+      });
   }
 
   useEffect(() => {
@@ -43,15 +46,27 @@ export default function Register() {
       }
     }
   }, [response]);
+
   return (
     <FromComponent Login={false} OnSubmitForm={onSubmit}>
+      <ToastContainer />
       <Input User={true}>
         <input
           type="text"
           name="name"
           onChange={onChange}
           value={values.name}
-          placeholder="Seu nome"
+          placeholder="Seu nome e sobrenome"
+          require={true}
+        />
+      </Input>
+      <Input User={true}>
+        <input
+          type="text"
+          name="userName"
+          onChange={onChange}
+          value={values.userName}
+          placeholder="nome de usuario exemplo: usuario123"
           require={true}
         />
       </Input>
@@ -79,7 +94,7 @@ export default function Register() {
       <Input Password={true}>
         <input
           Password={true}
-          type="text"
+          type="password"
           name="confirmpassword"
           onChange={onChange}
           value={values.confirmpassword}

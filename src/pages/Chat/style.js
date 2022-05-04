@@ -39,22 +39,32 @@ export const ChatContainer = styled.div`
       border-radius: 1rem;
     }
   }
-  .message {
+  /* .message {
     display: flex;
     align-items: center;
     .content {
       max-width: 90%;
       overflow-wrap: break-word;
       padding: 1rem;
-      font-size: 14px;
-      border-radius: 10px;
+      font-size: 16px;
+      border-radius: 15px;
       color: #d1d1d1;
       @media screen and (min-width: 720px) and (max-width: 1080px) {
         max-width: 70%;
       }
 
       span {
-        font-size: 13px;
+        font-size: 14px;
+      }
+
+      div.time {
+        display: flex;
+        justify-content: flex-end;
+        margin: 5px;
+        span {
+          color: grey;
+          font-size: 12px;
+        }
       }
     }
   }
@@ -69,10 +79,8 @@ export const ChatContainer = styled.div`
     .content {
       background-color: #202c33;
     }
-  }
+  } */
 `;
-
-export const MessageItem = styled.li``;
 
 export const FormContainer = styled.div`
   padding: 10px 5px;
@@ -104,15 +112,15 @@ export const FormContainer = styled.div`
     input {
       background-color: transparent;
       resize: none;
-      padding: 15px;
+      padding: 20px 15px;
       border-radius: 10px;
       width: 90%;
       height: 25px;
-      font-size: 14px;
+      font-size: 16px;
       border: none;
       outline: none;
       border: 0.5px solid ${color2};
-      color: ${color2};
+      color: white;
     }
   }
 `;
