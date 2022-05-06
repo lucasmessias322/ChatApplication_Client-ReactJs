@@ -120,33 +120,6 @@ export default function Chat() {
             GetTime={getCurrentTimeMessage(m.createdAt)}
             Message={m.msg}
           />
-          // <div key={i}>
-          //   <div
-          //     className={`message ${m.userId === myId ? "sended" : "recieved"}`}
-          //   >
-          //     <div className="content">
-          //       {m.userName === myUserName ? (
-          //         ""
-          //       ) : (
-          //         <span
-          //           className="me"
-          //           style={{
-          //             color: m.userName === myUserName ? "white" : m.msgColor,
-          //           }}
-          //         >
-          //           {m.userName === myUserName ? "" : m.userName}
-          //           <br />
-          //           <br />
-          //         </span>
-          //       )}
-
-          //       <p>{m.msg}</p>
-          //       <div className="time">
-          //         <span>{getCurrentTimeMessage(m.createdAt)}</span>
-          //       </div>
-          //     </div>
-          //   </div>
-          // </div>
         ))}
       </C.ChatContainer>
       <br /> <br /> <br /> <br /> <br /> <br />
