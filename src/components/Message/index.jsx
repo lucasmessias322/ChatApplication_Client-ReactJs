@@ -18,14 +18,12 @@ export default function Message({
             ""
           ) : (
             <span
-              className="me"
+              className="other"
               style={{
                 color: UserName === MyUserName ? "white" : MsgColor,
               }}
             >
               {UserName === MyUserName ? "" : UserName}
-              <br />
-              <br />
             </span>
           )}
 
@@ -46,9 +44,11 @@ const MessageContainer = styled.div`
     .content {
       max-width: 90%;
       overflow-wrap: break-word;
-      padding: 1rem;
+      padding: 0.5rem 1rem;
+      padding-top: 1rem;
+
       font-size: 16px;
-      border-radius: 15px;
+
       color: #d1d1d1;
       @media screen and (min-width: 720px) and (max-width: 1080px) {
         max-width: 70%;
@@ -73,12 +73,14 @@ const MessageContainer = styled.div`
     justify-content: flex-end;
     .content {
       background-color: #405765;
+      border-radius: 20px 0px 20px 20px;
     }
   }
   .recieved {
     justify-content: flex-start;
     .content {
       background-color: #202c33;
+      border-radius: 0px 20px 20px 20px;
     }
   }
 `;

@@ -4,6 +4,7 @@ import FromComponent from "../../components/FormComponent";
 import { postRegister } from "../../service/api";
 import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+
 export default function Register() {
   const navigate = useNavigate();
   const [response, setResponse] = useState({ msg: "", userCriado: false });
@@ -33,7 +34,9 @@ export default function Register() {
         setResponse(response.data);
       })
       .catch((error) => {
-        toast("Erro ao se registrar: " + JSON.stringify(error.response.data.msg));
+        toast(
+          "Erro ao se registrar: " + JSON.stringify(error.response.data.msg)
+        );
       });
   }
 
@@ -57,7 +60,7 @@ export default function Register() {
           onChange={onChange}
           value={values.name}
           placeholder="Seu nome e sobrenome"
-          require={true}
+          required={true}
         />
       </Input>
       <Input User={true}>
@@ -67,7 +70,7 @@ export default function Register() {
           onChange={onChange}
           value={values.userName}
           placeholder="nome de usuario exemplo: usuario123"
-          require={true}
+          required={true}
         />
       </Input>
       <Input Email={true}>
@@ -77,29 +80,27 @@ export default function Register() {
           onChange={onChange}
           value={values.email}
           placeholder="Seu email"
-          require={true}
+          required={true}
         />
       </Input>
       <Input Password={true}>
         <input
-          Password={true}
           type="text"
           name="password"
           onChange={onChange}
           value={values.password}
           placeholder="Sua senha"
-          require={true}
+          required={true}
         />
       </Input>
       <Input Password={true}>
         <input
-          Password={true}
           type="password"
           name="confirmpassword"
           onChange={onChange}
           value={values.confirmpassword}
           placeholder="Digite sua senha novamente"
-          require={true}
+          required={true}
         />
       </Input>
     </FromComponent>

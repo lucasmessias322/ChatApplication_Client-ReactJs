@@ -25,7 +25,9 @@ const Container = styled.div`
     align-items: center;
     color: #405765;
 
+
     h2 {
+      font-size: 20px;
     }
     div.assetsContainer {
       .asset {

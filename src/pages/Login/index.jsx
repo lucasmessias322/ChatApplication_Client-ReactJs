@@ -58,7 +58,7 @@ export default function Login() {
           name="email"
           onChange={onChange}
           value={values.email}
-          require={true}
+          required={true}
           placeholder="Digite seu email"
         />
       </Input>
@@ -68,7 +68,7 @@ export default function Login() {
           name="password"
           onChange={onChange}
           value={values.password}
-          require={true}
+          required={true}
           placeholder="Digite sua senha"
         />
       </Input>

@@ -52,8 +52,8 @@ const Container = styled.div`
 
       img {
         border-radius: 100%;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         object-fit: cover;
       }
       .textsContainer {
@@ -62,8 +62,10 @@ const Container = styled.div`
 
         h3 {
           color: #fff;
+          font-size:16px;
         }
         span {
+          font-size:14px;
           color: ${colors.color2};
         }
       }

@@ -1,14 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import io from "socket.io-client";
-import { v4 as uuidv4 } from "uuid";
 import * as C from "./style";
 import { FaAngleRight, FaSignOutAlt } from "react-icons/fa";
 import { AppContext } from "../../Context/Store";
 
-import { api } from "../../service/api";
 import Message from "../../components/Message";
-
-const oldSocket = io("http://localhost:8081");
+const SocketUrl = "http://192.168.0.5:8082";
+const oldSocket = io();
 
 export default function Chat() {
   const [msg, updateMessege] = useState("");
@@ -34,7 +32,7 @@ export default function Chat() {
   }
 
   useEffect(() => {
-    const Newsocket = io("http://192.168.0.5:8082", {
+    const Newsocket = io(SocketUrl, {
       auth: { token: token },
     });
 
@@ -44,17 +42,12 @@ export default function Chat() {
 
   useEffect(() => {
     if (socket) {
-      // socket.auth({ token: "esse token" });
       socket.on("connect", () =>
         console.log(`[IO] Connect => A new connection has been stablished`)
       );
       socket.on("output-message", (data) => {
         updateMesseges(data);
       });
-      console.log(
-        "this is user id",
-        JSON.parse(localStorage.getItem("currentUserData"))._id
-      );
     }
   }, [socket]);
 
